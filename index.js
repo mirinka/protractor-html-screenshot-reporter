@@ -55,8 +55,10 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 		if(!results.passed()){
 			var failedItem = _.where(results.items_,{passed_: false})[1];
 			if(failedItem){
-				metaData.message = failedItem.message || 'Failed';
-				metaData.trace = failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information';
+				//metaData.message = failedItem.message || 'Failed';
+				//metaData.trace = failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information';
+				metaData.message = "test message";
+				metaData.trace = "test trace";
 			}
 
 		}else{
