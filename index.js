@@ -65,12 +65,13 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 					metaData.trace = metaData.trace + (failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information') + '<br/><br/>';
 				}
 			}
-
+			
+			//add new line before each 'at'
+			metaData.trace = metaData.trace.replace(/ at /gi, '<br/>at ');
 		}else{
 			metaData.message = result.message || 'Passed';
 			metaData.trace = result.trace.stack;
 		}
-
 	}
 
 	return metaData;
