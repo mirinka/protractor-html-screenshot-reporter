@@ -41,7 +41,7 @@ function defaultPathBuilder(spec, descriptions, results, capabilities) {
  *     (Object) containig meta data to store along with a screenshot
  */
 function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
-	/*var metaData = {
+	var metaData = {
 			description: descriptions.join(' ')
 			, passed: results.passed()
 			, os: capabilities.caps_.platform
@@ -53,10 +53,17 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 	if(results.items_.length > 0) {
 		var result = results.items_[0];
 		if(!results.passed()){
-			var failedItem = _.where(results.items_,{passed_: false})[0];
-			if(failedItem){
-				metaData.message = failedItem.message || 'Failed';
-				metaData.trace = failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information';
+		
+			metaData.message = '';
+			metaData.trace = '';
+			
+			//collect all errors to be displayed in report
+			for (var i=0; i<_.where(results.items_,{passed_: false}).length; i++){
+				var failedItem = _.where(results.items_,{passed_: false})[i];
+				if(failedItem){
+					metaData.message = metaData.message + (failedItem.message || 'Failed') + '<br/><br/>';
+					metaData.trace = metaData.trace + (failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information') + '<br/><br/>';
+				}
 			}
 
 		}else{
@@ -64,10 +71,9 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 			metaData.trace = result.trace.stack;
 		}
 
-	}*/
+	}
 
-	//return metaData;
-	return null;
+	return metaData;
 }
 
 
