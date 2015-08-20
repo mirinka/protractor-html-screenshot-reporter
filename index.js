@@ -49,16 +49,16 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 				name: capabilities.caps_.browserName
 				, version: capabilities.caps_.version
 			}
+			, message: 'test'
+			, trace: 'test'
 		};
-	if(results.items_.length > 0) {
+	/*if(results.items_.length > 0) {
 		var result = results.items_[0];
 		if(!results.passed()){
-			var failedItem = _.where(results.items_,{passed_: false})[1];
+			var failedItem = _.where(results.items_,{passed_: false})[0];
 			if(failedItem){
-				//metaData.message = failedItem.message || 'Failed';
-				//metaData.trace = failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information';
-				metaData.message = "test message";
-				metaData.trace = "test trace";
+				metaData.message = failedItem.message || 'Failed';
+				metaData.trace = failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information';
 			}
 
 		}else{
@@ -66,7 +66,7 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 			metaData.trace = result.trace.stack;
 		}
 
-	}
+	}*/
 
 	return metaData;
 }
