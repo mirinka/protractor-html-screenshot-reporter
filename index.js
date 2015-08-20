@@ -53,7 +53,7 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 	if(results.items_.length > 0) {
 		var result = results.items_[0];
 		if(!results.passed()){
-			var failedItem = _.where(results.items_,{passed_: false})[0];
+			var failedItem = _.where(results.items_,{passed_: false})[1];
 			if(failedItem){
 				metaData.message = failedItem.message || 'Failed';
 				metaData.trace = failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information';
