@@ -41,7 +41,7 @@ function defaultPathBuilder(spec, descriptions, results, capabilities) {
  *     (Object) containig meta data to store along with a screenshot
  */
 function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
-	var metaData = {
+	/*var metaData = {
 			description: descriptions.join(' ')
 			, passed: results.passed()
 			, os: capabilities.caps_.platform
@@ -49,10 +49,8 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 				name: capabilities.caps_.browserName
 				, version: capabilities.caps_.version
 			}
-			, message: 'test'
-			, trace: 'test'
 		};
-	/*if(results.items_.length > 0) {
+	if(results.items_.length > 0) {
 		var result = results.items_[0];
 		if(!results.passed()){
 			var failedItem = _.where(results.items_,{passed_: false})[0];
@@ -68,7 +66,8 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 
 	}*/
 
-	return metaData;
+	//return metaData;
+	return null;
 }
 
 
