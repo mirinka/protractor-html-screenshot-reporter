@@ -61,8 +61,17 @@ function defaultMetaDataBuilder(spec, descriptions, results, capabilities) {
 			for (var i=0; i<_.where(results.items_,{passed_: false}).length; i++){
 				var failedItem = _.where(results.items_,{passed_: false})[i];
 				if(failedItem){
-					metaData.message = metaData.message + (failedItem.message || 'Failed') + '<br/><br/>';
-					metaData.trace = metaData.trace + (failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information') + '<br/><br/>';
+					metaData.message += failedItem.message || 'Failed';
+					metaData.trace += failedItem.trace? (failedItem.trace.stack || 'No Stack trace information') : 'No Stack trace information';
+				}
+				
+				//add new lines between messages and stack traces of different errors
+				if(i!==_.where(results.items_,{passed_: false}).length - 1){
+					metaData.message += '<br/><br/>';
+					metaData.trace += '<br/><br/>';
+				}else{
+					metaData.message += '<br/>';
+					metaData.trace += '<br/>';
 				}
 			}
 			
