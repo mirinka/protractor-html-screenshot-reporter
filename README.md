@@ -1,4 +1,5 @@
-# HTML Reporter with Screenshots for Protractor
+# HTML Reporter with Screenshots for Protractor - test
+
 
 This is built on top of Screenshot Reporter for Protractor https://github.com/swissmanu/protractor-screenshot-reporter
 
